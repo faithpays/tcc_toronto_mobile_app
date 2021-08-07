@@ -149,7 +149,9 @@ class _VideoPlayerState extends State<VideoPlayer>
     return ChangeNotifierProvider(
       create: (context) => MediaPlayerModel(userdata, widget.media),
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text(widget.media.title)
+        ),
         body: SafeArea(
           child: Column(
             children: <Widget>[

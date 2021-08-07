@@ -128,16 +128,20 @@ class _HomePageItemState extends State<HomePageItem> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          toolbarHeight: 70.0,
-          title: new Image(
-              image: new ExactAssetImage(Img.get("tcc_logo.png")),
-              height: 45.0,
-              width: 500.0,
+          toolbarHeight: 100.0,
+          title: 
+          
+          //Text("TCC TORONTO", style: TextStyle(fontWeight: FontWeight.bold),),
+          
+          new Image(
+              image: new ExactAssetImage(Img.get("TCC-whitetxt-Logo.png")),
+              height: 80.0,
+              width: 200.0,
               alignment: FractionalOffset.center),
-          shape: ContinuousRectangleBorder(
+          shape: RoundedRectangleBorder(
             borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(80.0),
-              bottomRight: Radius.circular(80.0),
+              bottomLeft: Radius.circular(90.0),
+              bottomRight: Radius.circular(90.0),
             ),
           ),
           actions: <Widget>[
@@ -163,7 +167,7 @@ class _HomePageItemState extends State<HomePageItem> {
               ),
             ),*/
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(right: 35.0, top: 15) ,
               child: IconButton(
                   icon: Icon(Icons.search),
                   onPressed: (() {
@@ -173,19 +177,19 @@ class _HomePageItemState extends State<HomePageItem> {
           ],
         ),
         body: buildPageBody(currentIndex),
-        drawer: Container(
-          color: MyColors.grey_95,
-          width: 300,
-          child: Drawer(
-            key: scaffoldKey,
-            child: DrawerScreen(),
-          ),
-        ),
+        // drawer: Container(
+        //   color: MyColors.grey_95,
+        //   width: 300,
+        //   child: Drawer(
+        //     key: scaffoldKey,
+        //     child: DrawerScreen(),
+        //   ),
+        // ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.blueGrey[900],
           selectedItemColor: MyColors.white,
-          unselectedItemColor: MyColors.grey_20,
+          unselectedItemColor: MyColors.grey_40,
           currentIndex: currentIndex,
           onTap: (int index) {
             setState(() {
