@@ -198,7 +198,7 @@ class HomePageBody extends StatelessWidget {
                   style: TextStyles.headline(context).copyWith(
                     fontWeight: FontWeight.bold,
                     fontFamily: "serif",
-                    fontSize: 18,
+                    fontSize: 24,
                   ),
                 ),
               ),
@@ -217,13 +217,13 @@ class HomePageBody extends StatelessWidget {
                           children: <Widget>[
                             Container(
                               height: double.infinity,
-                              padding: EdgeInsets.all(8),
-                              //margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                              padding: EdgeInsets.all(3),
+                              //margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
                                 child: Image.asset(
                                   "assets/images/pexels6.jpg",
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                   width: double.infinity,
                                   height: double.infinity,
                                   //color: Colors.black26,
@@ -248,17 +248,22 @@ class HomePageBody extends StatelessWidget {
                               alignment: Alignment.bottomCenter,
                               child: Container(
                                 //color: Colors.black54,
-                                margin: EdgeInsets.only(bottom: 12),
+                                margin: EdgeInsets.only(bottom: 20),
                                 height: 35,
                                 alignment: Alignment.center,
                                 child: Text(
                                   "Sermon",
                                   style: TextStyles.caption(context).copyWith(
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                    fontFamily: "serif",
-                                  ),
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.white,
+                                      fontFamily: "serif",
+                                      shadows: [
+                                        Shadow(
+                                            color: Colors.black,
+                                            offset: Offset(0, 1),
+                                            blurRadius: 5),
+                                      ]),
                                   maxLines: 1,
                                   textAlign: TextAlign.left,
                                 ),
@@ -290,7 +295,7 @@ class HomePageBody extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.asset(
                                         "assets/images/pexels4.jpg",
-                                        fit: BoxFit.fill,
+                                        fit: BoxFit.cover,
                                         width: double.infinity,
                                         height: double.infinity,
                                         //color: Colors.black26,
@@ -308,11 +313,16 @@ class HomePageBody extends StatelessWidget {
                                         "Events",
                                         style: TextStyles.caption(context)
                                             .copyWith(
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          fontFamily: "serif",
-                                        ),
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.w800,
+                                                color: Colors.white,
+                                                fontFamily: "serif",
+                                                shadows: [
+                                              Shadow(
+                                                  color: Colors.black,
+                                                  offset: Offset(0, 1),
+                                                  blurRadius: 5),
+                                            ]),
                                         maxLines: 1,
                                         textAlign: TextAlign.left,
                                       ),
@@ -341,7 +351,9 @@ class HomePageBody extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.asset(
                                         "assets/images/pexels3.jpg",
-                                        fit: BoxFit.fill,
+                                        fit: BoxFit.cover,
+                                        color: Colors.black26,
+                                        colorBlendMode: BlendMode.darken,
                                         width: double.infinity,
                                         height: double.infinity,
                                         //color: Colors.black26,
@@ -359,11 +371,17 @@ class HomePageBody extends StatelessWidget {
                                         "Share Testimony",
                                         style: TextStyles.caption(context)
                                             .copyWith(
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          fontFamily: "serif",
-                                        ),
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.w800,
+                                                color: Colors.white,
+                                                fontFamily: "serif",
+                                                shadows: [
+                                              Shadow(
+                                                  color: Colors.black
+                                                      .withOpacity(1.0),
+                                                  offset: Offset(0, 3),
+                                                  blurRadius: 5),
+                                            ]),
                                         maxLines: 1,
                                         textAlign: TextAlign.left,
                                       ),
@@ -398,88 +416,92 @@ class HomePageBody extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              height: 180,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: false,
-                children: [
-                  ItemTile(
-                    index: HomeIndex.CATEGORIES,
-                    homeProvider: homeProvider,
-                    title: "Bible",
-                    thumbnail: "",
-                    useAssetsImage: true,
-                    assetsImage: "assets/images/bible.jpeg",
-                    callback: () {
-                      Navigator.of(context).pushNamed(BibleScreen.routeName);
-                    },
-                  ),
-                  ItemTile(
-                    index: HomeIndex.CATEGORIES,
-                    homeProvider: homeProvider,
-                    title: "Devotionals",
-                    thumbnail: "",
-                    useAssetsImage: true,
-                    assetsImage: "assets/images/devotionals.jpeg",
-                    callback: () {
-                      Navigator.of(context)
-                          .pushNamed(DevotionalScreen.routeName);
-                    },
-                  ),
-                  ItemTile(
-                    index: HomeIndex.CATEGORIES,
-                    homeProvider: homeProvider,
-                    title: "LiveStream",
-                    thumbnail: "",
-                    useAssetsImage: true,
-                    assetsImage: "assets/images/pexels7.jpg",
-                    callback: () {
-                      Navigator.of(context)
-                          .pushNamed(LivestreamsPlayer.routeName,
-                              arguments: ScreenArguements(
-                                position: 0,
-                                items: homeProvider.data['livestream'],
-                                itemsList: [],
-                              ));
-                    },
-                  ),
-                  ItemTile(
-                    index: HomeIndex.CATEGORIES,
-                    homeProvider: homeProvider,
-                    title: "Prayer Request",
-                    thumbnail: "",
-                    useAssetsImage: true,
-                    assetsImage: "assets/images/pexels1.jpg",
-                    callback: () {
-                      Navigator.of(context)
-                          .pushNamed(PrayerRequestScreen.routeName);
-                    },
-                  ),
-                  ItemTile(
-                    index: HomeIndex.CATEGORIES,
-                    homeProvider: homeProvider,
-                    title: "Location",
-                    thumbnail: "",
-                    useAssetsImage: true,
-                    assetsImage: "assets/images/pexels2.jpg",
-                    callback: () {
-                      Navigator.of(context).pushNamed(BranchesScreen.routeName);
-                    },
-                  ),
-                  ItemTile(
-                    index: HomeIndex.CATEGORIES,
-                    homeProvider: homeProvider,
-                    title: "Worship Guide",
-                    thumbnail: "",
-                    useAssetsImage: true,
-                    assetsImage: "assets/images/pexels5.jpg",
-                    callback: () {
-                      Navigator.of(context)
-                          .pushNamed(WorshipGuideScreen.routeName);
-                    },
-                  )
-                ],
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Container(
+                height: 180,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: false,
+                  children: [
+                    ItemTile(
+                      index: HomeIndex.CATEGORIES,
+                      homeProvider: homeProvider,
+                      title: "Bible",
+                      thumbnail: "",
+                      useAssetsImage: true,
+                      assetsImage: "assets/images/bible.jpg",
+                      callback: () {
+                        Navigator.of(context).pushNamed(BibleScreen.routeName);
+                      },
+                    ),
+                    ItemTile(
+                      index: HomeIndex.CATEGORIES,
+                      homeProvider: homeProvider,
+                      title: "Devotionals",
+                      thumbnail: "",
+                      useAssetsImage: true,
+                      assetsImage: "assets/images/devotionals.jpeg",
+                      callback: () {
+                        Navigator.of(context)
+                            .pushNamed(DevotionalScreen.routeName);
+                      },
+                    ),
+                    ItemTile(
+                      index: HomeIndex.CATEGORIES,
+                      homeProvider: homeProvider,
+                      title: "LiveStream",
+                      thumbnail: "",
+                      useAssetsImage: true,
+                      assetsImage: "assets/images/pexels7.jpg",
+                      callback: () {
+                        Navigator.of(context)
+                            .pushNamed(LivestreamsPlayer.routeName,
+                                arguments: ScreenArguements(
+                                  position: 0,
+                                  items: homeProvider.data['livestream'],
+                                  itemsList: [],
+                                ));
+                      },
+                    ),
+                    ItemTile(
+                      index: HomeIndex.CATEGORIES,
+                      homeProvider: homeProvider,
+                      title: "Prayer Request",
+                      thumbnail: "",
+                      useAssetsImage: true,
+                      assetsImage: "assets/images/pexels1.jpg",
+                      callback: () {
+                        Navigator.of(context)
+                            .pushNamed(PrayerRequestScreen.routeName);
+                      },
+                    ),
+                    ItemTile(
+                      index: HomeIndex.CATEGORIES,
+                      homeProvider: homeProvider,
+                      title: "Location",
+                      thumbnail: "",
+                      useAssetsImage: true,
+                      assetsImage: "assets/images/pexels2.jpg",
+                      callback: () {
+                        Navigator.of(context)
+                            .pushNamed(BranchesScreen.routeName);
+                      },
+                    ),
+                    ItemTile(
+                      index: HomeIndex.CATEGORIES,
+                      homeProvider: homeProvider,
+                      title: "Worship Guide",
+                      thumbnail: "",
+                      useAssetsImage: true,
+                      assetsImage: "assets/images/pexels5.jpg",
+                      callback: () {
+                        Navigator.of(context)
+                            .pushNamed(WorshipGuideScreen.routeName);
+                      },
+                    )
+                  ],
+                ),
               ),
             ),
             Align(
@@ -537,19 +559,34 @@ class ItemTile extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Container(
-                height: 140,
+                height: 124,
+                margin: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.0),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.5),
+                      blurRadius: 5.0,
+                      spreadRadius: -2.0,
+                      offset:
+                          Offset(6.0, 6.0), // shadow direction: bottom right
+                    )
+                  ],
+                ),
                 //margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: CachedNetworkImage(
+                    color: Colors.black26,
+                    colorBlendMode: BlendMode.darken,
                     imageUrl: thumbnail,
                     imageBuilder: (context, imageProvider) => Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: imageProvider,
-                            fit: BoxFit.cover,
-                            colorFilter: ColorFilter.mode(
-                                Colors.black12, BlendMode.darken)),
+                          image: imageProvider,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     placeholder: (context, url) =>
@@ -560,6 +597,8 @@ class ItemTile extends StatelessWidget {
                       fit: BoxFit.fill,
                       width: double.infinity,
                       height: double.infinity,
+                      color: Colors.black26,
+                        colorBlendMode: BlendMode.darken,
                       //color: Colors.black26,
                     )),
                   ),
@@ -574,7 +613,7 @@ class ItemTile extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Text(
                     title,
-                    style: TextStyles.caption(context).copyWith(
+                    style: TextStyles.body2(context).copyWith(
                       fontSize: 13.0,
                       fontWeight: FontWeight.bold,
                       //color: Colors.white,
