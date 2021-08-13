@@ -25,7 +25,7 @@ class _ConnectScreenState extends State<ConnectScreen> {
     Connect(title: "Life Group", image: "assets/images/lifegroup.jpg"),
     Connect(title: "Ministries", image: "assets/images/ministries.jpg"),
     Connect(title: "Worship Guide", image: "assets/images/worship.jpg"),
-    Connect(title: "Prayer Request", image: "assets/images/prayer-request.jpg"),
+    Connect(title: "Prayer Request", image: "assets/images/pexels1.jpg"),
     Connect(title: "Locations", image: "assets/images/location.jpg"),
     Connect(title: "Share Testimony", image: "assets/images/testimony.jpg"),
   ];

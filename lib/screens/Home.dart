@@ -430,7 +430,7 @@ class HomePageBody extends StatelessWidget {
                       title: "Bible",
                       thumbnail: "",
                       useAssetsImage: true,
-                      assetsImage: "assets/images/bible.jpg",
+                      assetsImage: "assets/images/Bible-4.jpg",
                       callback: () {
                         Navigator.of(context).pushNamed(BibleScreen.routeName);
                       },

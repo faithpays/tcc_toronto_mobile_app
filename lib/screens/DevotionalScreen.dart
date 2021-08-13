@@ -267,7 +267,7 @@ class _BranchesPageBodyState extends State<DevotionalsPageBody> {
                       Center(child: CupertinoActivityIndicator()),
                   errorWidget: (context, url, error) => Center(
                       child: Image.asset(
-                    Img.get('devotionals.jpg'),
+                    Img.get('devotionals.jpeg'),
                     fit: BoxFit.fill,
                     width: double.infinity,
                     height: double.infinity,
