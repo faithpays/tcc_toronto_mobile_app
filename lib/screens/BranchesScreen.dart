@@ -246,43 +246,33 @@ class ItemTile extends StatelessWidget {
                 ],
               ),
               Container(height: 10),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).pushNamed(LocationMap.routeName,
-                      arguments: ScreenArguements(
-                        position: 0,
-                        items: branches,
-                        itemsList: [],
-                      ));
-                },
-                child: Row(
-                  children: <Widget>[
-                    ClipOval(
-                        child: Container(
-                      color: Theme.of(context).accentColor.withAlpha(30),
-                      width: 50.0,
-                      height: 50.0,
-                      child: IconButton(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.location_on,
-                        ),
-                      ),
-                    )),
-                    Container(width: 15),
-                    Expanded(
-                      child: Text(
-                        "View in map",
-                        style: TextStyles.subhead(context).copyWith(
-                          fontWeight: FontWeight.w500,
-                          decoration: TextDecoration.underline,
-                        ),
-                        textAlign: TextAlign.left,
+              Row(
+                children: <Widget>[
+                  ClipOval(
+                      child: Container(
+                    color: Theme.of(context).accentColor.withAlpha(30),
+                    width: 50.0,
+                    height: 50.0,
+                    child: IconButton(
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.location_on,
                       ),
                     ),
-                  ],
-                ),
+                  )),
+                  Container(width: 15),
+                  Expanded(
+                    child: Text(
+                      "126 Milwick DR Unit 5 North York Toronto Ontario, Canada",
+                      style: TextStyles.subhead(context).copyWith(
+                        fontWeight: FontWeight.w500,
+                        //decoration: TextDecoration.underline,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                ],
               )
             ],
           ),

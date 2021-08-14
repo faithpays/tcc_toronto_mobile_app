@@ -205,81 +205,81 @@ class _WorshipGuideScreenBodyState extends State<WorshipGuideScreenBody> {
             ),
           ),
           Divider(),
-          ListTile(
-            contentPadding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-            onTap: () {
-              if (Provider.of<WorshipGuideProvider>(context, listen: false)
-                      .worshipGuide ==
-                  null) {
-                Alerts.show(
-                    context, "", "The item is not available at the moment");
-                return;
-              } else {
-                WorshipGuideItem worshipGuideItem = WorshipGuideItem(
-                    title: "Media",
-                    content: Provider.of<WorshipGuideProvider>(context,
-                            listen: false)
-                        .worshipGuide
-                        .media);
-                Navigator.pushNamed(context, WorshipGuideItemScreen.routeName,
-                    arguments: ScreenArguements(
-                      position: 0,
-                      items: worshipGuideItem,
-                    ));
-              }
-            },
-            leading: Icon(Icons.accessibility),
-            title: Text(
-              "Media",
-              style: TextStyles.headline(context).copyWith(
-                fontWeight: FontWeight.bold,
-                //fontFamily: "serif",
-                fontSize: 18,
-              ),
-            ),
-            trailing: Icon(
-              Icons.navigate_next,
-              size: 28,
-            ),
-          ),
-          Divider(),
-          ListTile(
-            contentPadding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-            onTap: () {
-              if (Provider.of<WorshipGuideProvider>(context, listen: false)
-                      .worshipGuide ==
-                  null) {
-                Alerts.show(
-                    context, "", "The item is not available at the moment");
-                return;
-              } else {
-                WorshipGuideItem worshipGuideItem = WorshipGuideItem(
-                    title: "Up Next",
-                    content: Provider.of<WorshipGuideProvider>(context,
-                            listen: false)
-                        .worshipGuide
-                        .upnext);
-                Navigator.pushNamed(context, WorshipGuideItemScreen.routeName,
-                    arguments: ScreenArguements(
-                      position: 0,
-                      items: worshipGuideItem,
-                    ));
-              }
-            },
-            leading: Icon(Icons.play_circle_fill),
-            title: Text(
-              "Up Next",
-              style: TextStyles.headline(context).copyWith(
-                fontWeight: FontWeight.bold,
-                //fontFamily: "serif",
-                fontSize: 18,
-              ),
-            ),
-            trailing: Icon(
-              Icons.navigate_next,
-              size: 28,
-            ),
-          ),
+          // ListTile(
+          //   contentPadding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+          //   onTap: () {
+          //     if (Provider.of<WorshipGuideProvider>(context, listen: false)
+          //             .worshipGuide ==
+          //         null) {
+          //       Alerts.show(
+          //           context, "", "The item is not available at the moment");
+          //       return;
+          //     } else {
+          //       WorshipGuideItem worshipGuideItem = WorshipGuideItem(
+          //           title: "Media",
+          //           content: Provider.of<WorshipGuideProvider>(context,
+          //                   listen: false)
+          //               .worshipGuide
+          //               .media);
+          //       Navigator.pushNamed(context, WorshipGuideItemScreen.routeName,
+          //           arguments: ScreenArguements(
+          //             position: 0,
+          //             items: worshipGuideItem,
+          //           ));
+          //     }
+          //   },
+          //   leading: Icon(Icons.accessibility),
+          //   title: Text(
+          //     "Media",
+          //     style: TextStyles.headline(context).copyWith(
+          //       fontWeight: FontWeight.bold,
+          //       //fontFamily: "serif",
+          //       fontSize: 18,
+          //     ),
+          //   ),
+          //   trailing: Icon(
+          //     Icons.navigate_next,
+          //     size: 28,
+          //   ),
+          // ),
+          // Divider(),
+          // ListTile(
+          //   contentPadding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+          //   onTap: () {
+          //     if (Provider.of<WorshipGuideProvider>(context, listen: false)
+          //             .worshipGuide ==
+          //         null) {
+          //       Alerts.show(
+          //           context, "", "The item is not available at the moment");
+          //       return;
+          //     } else {
+          //       WorshipGuideItem worshipGuideItem = WorshipGuideItem(
+          //           title: "Up Next",
+          //           content: Provider.of<WorshipGuideProvider>(context,
+          //                   listen: false)
+          //               .worshipGuide
+          //               .upnext);
+          //       Navigator.pushNamed(context, WorshipGuideItemScreen.routeName,
+          //           arguments: ScreenArguements(
+          //             position: 0,
+          //             items: worshipGuideItem,
+          //           ));
+          //     }
+          //   },
+          //   leading: Icon(Icons.play_circle_fill),
+          //   title: Text(
+          //     "Up Next",
+          //     style: TextStyles.headline(context).copyWith(
+          //       fontWeight: FontWeight.bold,
+          //       //fontFamily: "serif",
+          //       fontSize: 18,
+          //     ),
+          //   ),
+          //   trailing: Icon(
+          //     Icons.navigate_next,
+          //     size: 28,
+          //   ),
+          // ),
           Divider(),
           Container(height: 20),
           Align(
@@ -323,75 +323,75 @@ class _WorshipGuideScreenBodyState extends State<WorshipGuideScreenBody> {
                     height: 40,
                   ),
                 ),
-                Container(width: 10),
-                InkWell(
-                  onTap: () {
-                    if (Provider.of<WorshipGuideProvider>(context,
-                                listen: false)
-                            .worshipGuide ==
-                        null) {
-                      Alerts.show(context, "",
-                          "The item is not available at the moment");
-                      return;
-                    } else {
-                      openBrowserTab(Provider.of<WorshipGuideProvider>(context,
-                              listen: false)
-                          .worshipGuide
-                          .youtube);
-                    }
-                  },
-                  child: Container(
-                    child: Image.asset(Img.get('img_social_youtube.png')),
-                    width: 40,
-                    height: 40,
-                  ),
-                ),
-                Container(width: 10),
-                InkWell(
-                  onTap: () {
-                    if (Provider.of<WorshipGuideProvider>(context,
-                                listen: false)
-                            .worshipGuide ==
-                        null) {
-                      Alerts.show(context, "",
-                          "The item is not available at the moment");
-                      return;
-                    } else {
-                      openBrowserTab(Provider.of<WorshipGuideProvider>(context,
-                              listen: false)
-                          .worshipGuide
-                          .twitter);
-                    }
-                  },
-                  child: Container(
-                    child: Image.asset(Img.get('img_social_twitter.png')),
-                    width: 40,
-                    height: 40,
-                  ),
-                ),
-                Container(width: 10),
-                InkWell(
-                  onTap: () {
-                    if (Provider.of<WorshipGuideProvider>(context,
-                                listen: false)
-                            .worshipGuide ==
-                        null) {
-                      Alerts.show(context, "",
-                          "The item is not available at the moment");
-                      return;
-                    } else {
-                      openBrowserTab(Provider.of<WorshipGuideProvider>(context,
-                              listen: false)
-                          .worshipGuide
-                          .instagram);
-                    }
-                  },
-                  child: Container(
-                    child: Image.asset(Img.get('img_social_instagram.png')),
-                    width: 40,
-                    height: 40,
-                  ),
-                ),
+                // Container(width: 10),
+                // InkWell(
+                //   onTap: () {
+                //     if (Provider.of<WorshipGuideProvider>(context,
+                //                 listen: false)
+                //             .worshipGuide ==
+                //         null) {
+                //       Alerts.show(context, "",
+                //           "The item is not available at the moment");
+                //       return;
+                //     } else {
+                //       openBrowserTab(Provider.of<WorshipGuideProvider>(context,
+                //               listen: false)
+                //           .worshipGuide
+                //           .youtube);
+                //     }
+                //   },
+                //   child: Container(
+                //     child: Image.asset(Img.get('img_social_youtube.png')),
+                //     width: 40,
+                //     height: 40,
+                //   ),
+                // ),
+                // Container(width: 10),
+                // InkWell(
+                //   onTap: () {
+                //     if (Provider.of<WorshipGuideProvider>(context,
+                //                 listen: false)
+                //             .worshipGuide ==
+                //         null) {
+                //       Alerts.show(context, "",
+                //           "The item is not available at the moment");
+                //       return;
+                //     } else {
+                //       openBrowserTab(Provider.of<WorshipGuideProvider>(context,
+                //               listen: false)
+                //           .worshipGuide
+                //           .twitter);
+                //     }
+                //   },
+                //   child: Container(
+                //     child: Image.asset(Img.get('img_social_twitter.png')),
+                //     width: 40,
+                //     height: 40,
+                //   ),
+                // ),
+                // Container(width: 10),
+                // InkWell(
+                //   onTap: () {
+                //     if (Provider.of<WorshipGuideProvider>(context,
+                //                 listen: false)
+                //             .worshipGuide ==
+                //         null) {
+                //       Alerts.show(context, "",
+                //           "The item is not available at the moment");
+                //       return;
+                //     } else {
+                //       openBrowserTab(Provider.of<WorshipGuideProvider>(context,
+                //               listen: false)
+                //           .worshipGuide
+                //           .instagram);
+                //     }
+                //   },
+                //   child: Container(
+                //     child: Image.asset(Img.get('img_social_instagram.png')),
+                //     width: 40,
+                //     height: 40,
+                //   ),
+                // ),
               ],
             ),
           ),
