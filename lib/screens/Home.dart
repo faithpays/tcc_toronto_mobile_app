@@ -1,4 +1,5 @@
 import 'package:churchapp_flutter/providers/AppStateManager.dart';
+import 'package:churchapp_flutter/screens/GiveNowScreen.dart';
 import 'package:churchapp_flutter/screens/GiveTestimonyScreen.dart';
 import 'package:churchapp_flutter/screens/PrayerRequestScreen.dart';
 import 'package:churchapp_flutter/screens/WorshipGuideScreen.dart';
@@ -435,6 +436,17 @@ class HomePageBody extends StatelessWidget {
                         Navigator.of(context).pushNamed(BibleScreen.routeName);
                       },
                     ),
+                    // ItemTile(
+                    //   index: HomeIndex.CATEGORIES,
+                    //   homeProvider: homeProvider,
+                    //   title: "Give Now",
+                    //   thumbnail: "",
+                    //   useAssetsImage: true,
+                    //   assetsImage: "assets/images/donate.jpeg",
+                    //   callback: () {
+                    //     Navigator.of(context).pushNamed(GiveNowScreen.routeName);
+                    //   },
+                    // ),
                     ItemTile(
                       index: HomeIndex.CATEGORIES,
                       homeProvider: homeProvider,

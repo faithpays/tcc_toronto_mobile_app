@@ -10,6 +10,7 @@ import '../models/Branches.dart';
 import '../utils/TextStyles.dart';
 import 'NoitemScreen.dart';
 import '../i18n/strings.g.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 
 class BranchesScreen extends StatelessWidget {
   static const routeName = "/branches";
@@ -255,21 +256,30 @@ class ItemTile extends StatelessWidget {
                     height: 50.0,
                     child: IconButton(
                       padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                      onPressed: () {},
+                      onPressed: () {
+                        MapsLauncher.launchCoordinates(branches.latitude, branches.longitude,
+                            '${branches.address}is here');
+                      },
                       icon: Icon(
                         Icons.location_on,
                       ),
                     ),
                   )),
                   Container(width: 15),
-                  Expanded(
-                    child: Text(
-                      "126 Milwick DR Unit 5 North York Toronto Ontario, Canada",
-                      style: TextStyles.subhead(context).copyWith(
-                        fontWeight: FontWeight.w500,
-                        //decoration: TextDecoration.underline,
+                  GestureDetector(
+                    onTap: (){
+                         MapsLauncher.launchCoordinates(branches.latitude, branches.longitude,
+                            'TCC TORONTO is here');
+                    },
+                    child: Expanded(
+                      child: Text(
+                        "Get Direction",
+                        style: TextStyles.subhead(context).copyWith(
+                          fontWeight: FontWeight.w500,
+                          decoration: TextDecoration.underline,
+                        ),
+                        textAlign: TextAlign.left,
                       ),
-                      textAlign: TextAlign.left,
                     ),
                   ),
                 ],
