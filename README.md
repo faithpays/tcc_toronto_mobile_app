@@ -1,4 +1,4 @@
-# churchapp_flutter
+# TCC TORONTO MOBILE APP
 
 A new Flutter project.
 
