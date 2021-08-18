@@ -11,6 +11,7 @@ import '../screens/DrawerScreen.dart';
 import '../screens/SearchScreen.dart';
 import '../models/ScreenArguements.dart';
 import '../screens/Downloader.dart';
+import 'GiveNowScreen.dart';
 import 'Home.dart';
 import '../utils/my_colors.dart';
 import 'package:provider/provider.dart';
@@ -54,10 +55,9 @@ class _HomePageItemState extends State<HomePageItem> {
         title: Text("Home")),
     BottomNavigationBarItem(
         icon: Icon(Icons.video_camera_back_outlined), title: Text("Media")),
+    BottomNavigationBarItem(icon: Icon(Icons.favorite_rounded), title: Text("Give")),
     BottomNavigationBarItem(
         icon: Icon(Icons.connect_without_contact), title: Text("Connect")),
-    // BottomNavigationBarItem(
-    //     icon: Icon(Icons.favorite_border), title: Text("Give")),
     BottomNavigationBarItem(
         icon: Icon(Icons.event_available_outlined), title: Text("Events"))
   ];
@@ -127,17 +127,23 @@ class _HomePageItemState extends State<HomePageItem> {
       },
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           elevation: 0,
           toolbarHeight: 100.0,
-          title: 
-          
-          //Text("TCC TORONTO", style: TextStyle(fontWeight: FontWeight.bold),),
-          
-          new Image(
-              image: new ExactAssetImage(Img.get("TCC-whitetxt-Logo.png")),
-              height: 80.0,
-              width: 200.0,
-              alignment: FractionalOffset.center),
+          title:
+
+              //Text("TCC TORONTO", style: TextStyle(fontWeight: FontWeight.bold),),
+
+              Padding(
+                padding: const EdgeInsets.only(left: 68.0),
+                child: Center(
+                  child: new Image(
+                      image: new ExactAssetImage(Img.get("TCC-whitetxt-Logo.png")),
+                      height: 80.0,
+                      width: 200.0,
+                      alignment: FractionalOffset.center),
+                ),
+              ),
           shape: RoundedRectangleBorder(
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(90.0),
@@ -167,7 +173,7 @@ class _HomePageItemState extends State<HomePageItem> {
               ),
             ),*/
             Padding(
-              padding: const EdgeInsets.only(right: 35.0, top: 15) ,
+              padding: const EdgeInsets.only(right: 35.0, top: 15),
               child: IconButton(
                   icon: Icon(Icons.search),
                   onPressed: (() {
@@ -216,14 +222,13 @@ class _HomePageItemState extends State<HomePageItem> {
     }
 
     if (currentIndex == 2) {
-      return ConnectScreen();
+      return GiveNowScreen();
     }
 
-    // if (currentIndex == 3) {
-    //   return DonateScreen();
-    // }
-
     if (currentIndex == 3) {
+      return ConnectScreen();
+    }
+    if (currentIndex == 4) {
       return ChangeNotifierProvider(
         create: (context) => EventsModel(),
         child: EventsScreen(),

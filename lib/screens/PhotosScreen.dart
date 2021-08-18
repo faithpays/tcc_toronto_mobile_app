@@ -87,59 +87,62 @@ class _PhotosScreenBodyBodyState extends State<PhotosScreenBody> {
               title: t.oops,
               message: "No Photos available at the moment.",
               onClick: _onRefresh)
-          : GridView.builder(
-              itemCount: photosModel.photos.length,
-              scrollDirection: Axis.vertical,
-              padding: EdgeInsets.all(3),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 1.0,
-                  mainAxisSpacing: 2.0,
-                  childAspectRatio: 0.9),
-              itemBuilder: (BuildContext context, int index) {
-                Photos photos = photosModel.photos[index];
-                return InkWell(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(Imageviewer.routeName,
-                        arguments: ScreenArguements(
-                          position: 0,
-                          items: photos,
-                          itemsList: [],
-                        ));
-                  },
-                  child: Card(
-                      margin: EdgeInsets.all(0),
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: Container(
-                        //height: 80,
-                        //width: 80,
-                        child: CachedNetworkImage(
-                          imageUrl: photos.thumbnail,
-                          imageBuilder: (context, imageProvider) => Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: imageProvider,
-                                  fit: BoxFit.cover,
-                                  colorFilter: ColorFilter.mode(
-                                      Colors.black12, BlendMode.darken)),
-                            ),
-                          ),
-                          placeholder: (context, url) =>
-                              Center(child: CupertinoActivityIndicator()),
-                          errorWidget: (context, url, error) => Center(
-                              child: Icon(
-                            Icons.error,
-                            color: Colors.grey,
-                          )),
+          : Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GridView.builder(
+                itemCount: photosModel.photos.length,
+                scrollDirection: Axis.vertical,
+                padding: EdgeInsets.all(3),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 12.0,
+                    mainAxisSpacing: 5.0,
+                    childAspectRatio: 0.9),
+                itemBuilder: (BuildContext context, int index) {
+                  Photos photos = photosModel.photos[index];
+                  return InkWell(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(Imageviewer.routeName,
+                          arguments: ScreenArguements(
+                            position: 0,
+                            items: photos,
+                            itemsList: [],
+                          ));
+                    },
+                    child: Card(
+                        margin: EdgeInsets.all(0),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                      )),
-                );
-              },
-            ),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        child: Container(
+                          //height: 80,
+                          //width: 80,
+                          child: CachedNetworkImage(
+                            imageUrl: photos.thumbnail,
+                            imageBuilder: (context, imageProvider) => Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: imageProvider,
+                                    fit: BoxFit.cover,
+                                    colorFilter: ColorFilter.mode(
+                                        Colors.black12, BlendMode.darken)),
+                              ),
+                            ),
+                            placeholder: (context, url) =>
+                                Center(child: CupertinoActivityIndicator()),
+                            errorWidget: (context, url, error) => Center(
+                                child: Icon(
+                              Icons.error,
+                              color: Colors.grey,
+                            )),
+                          ),
+                        )),
+                  );
+                },
+              ),
+          ),
     );
   }
 }

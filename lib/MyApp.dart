@@ -85,6 +85,7 @@ import './service/Firebase.dart';
 import './models/Media.dart';
 import './providers/events.dart';
 import './models/UserEvents.dart';
+import 'utils/img.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({
@@ -232,32 +233,37 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         title: 'App',
         home: appStateManager.isLoadingTheme
             ? Container(
-                child: Center(
-                  child: Container(
-                    width: double.infinity,
-                    alignment: Alignment.center,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Container(height: 10),
-                        Text(t.appname,
-                            style: TextStyles.medium(context).copyWith(
-                                fontFamily: "serif",
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30)),
-                        Container(height: 12),
-                        Text(t.initializingapp,
-                            style: TextStyles.body1(context)
-                                .copyWith(color: Colors.grey[500])),
-                        Container(height: 50),
-                        CupertinoActivityIndicator(
-                          radius: 20,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: ExactAssetImage(Img.get("tcclogo.png")),
+                        fit: BoxFit.contain)),
+                // child: Center(
+                //   child: Container(
+
+                //     width: double.infinity,
+                //     alignment: Alignment.center,
+                // child: Column(
+                //   mainAxisSize: MainAxisSize.min,
+                //   children: <Widget>[
+                //     Container(height: 10),
+                //     Text(t.appname,
+                //         style: TextStyles.medium(context).copyWith(
+                //             fontFamily: "serif",
+                //             color: Colors.white,
+                //             fontWeight: FontWeight.bold,
+                //             fontSize: 30)),
+                //     Container(height: 12),
+                //     Text(t.initializingapp,
+                //         style: TextStyles.body1(context)
+                //             .copyWith(color: Colors.grey[500])),
+                //     Container(height: 50),
+                //     CupertinoActivityIndicator(
+                //       radius: 20,
+                //     )
+                //   ],
+                // ),
+                // ),
+                // ),
               )
             : widget._defaultHome,
         debugShowCheckedModeBanner: false,

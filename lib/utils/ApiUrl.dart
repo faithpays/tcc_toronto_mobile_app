@@ -93,4 +93,5 @@ class ApiUrl {
   static const String fetch_photos = BASEURL + "fetch_photos";
   static const String connect_card = BASEURL + "connect_card";
   static const String getWorshipGuide = BASEURL + "getWorshipGuide";
+  static const String donateUrl = "https://donation.faithpays.org/dms/register.php?id=";
 }

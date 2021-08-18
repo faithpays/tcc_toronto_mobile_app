@@ -125,7 +125,7 @@ class Strings {
 	static Strings _instance = Strings();
 	static Strings get instance => _instance;
 
-	String get appname => 'FaithPays';
+	String get appname => 'TCC TORONTO';
 	String get selectlanguage => 'Select Language';
 	String get chooseapplanguage => 'Choose App Language';
 	String get nightmode => 'Night Mode';

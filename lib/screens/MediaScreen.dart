@@ -34,95 +34,99 @@ class _MediaScreenState extends State<MediaScreen> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: GridView.builder(
-        itemCount: _conect.length,
-        scrollDirection: Axis.vertical,
-        padding: EdgeInsets.all(3),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 1,
-            crossAxisSpacing: 1.0,
-            mainAxisSpacing: 2.0,
-            childAspectRatio: 2.5),
-        itemBuilder: (BuildContext context, int index) {
-          return InkWell(
-            child: Container(
-              //width: MediaQuery.of(context).size.width,
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+      child: Container(
+        child: GridView.builder(
+          itemCount: _conect.length,
+          scrollDirection: Axis.vertical,
+          padding: EdgeInsets.all(3),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 1,
+              crossAxisSpacing: 5.0,
+              mainAxisSpacing: 12.0,
+              childAspectRatio: 2.5),
+          itemBuilder: (BuildContext context, int index) {
+            return InkWell(
+              child: Container(
+                //width: MediaQuery.of(context).size.width,
 
-              padding: EdgeInsets.all(0),
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    height: double.infinity,
-                    //margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(5),
-                      child: Image.asset(
-                        _conect[index].image,
-                        fit: BoxFit.cover,
-                        color: Colors.black26,
-                        colorBlendMode: BlendMode.darken,
-                        width: double.infinity,
-                        height: double.infinity,
-                        //color: Colors.black26,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      //color: Colors.black54,
-                      margin: EdgeInsets.only(bottom: 50),
-                      height: 35,
-                      alignment: Alignment.center,
-                      child: Text(
-                        _conect[index].title,
-                        style: TextStyles.caption(context).copyWith(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          //fontFamily: "serif",
+                padding: EdgeInsets.all(0),
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      height: double.infinity,
+                      //margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: Image.asset(
+                          _conect[index].image,
+                          fit: BoxFit.cover,
+                          color: Colors.black26,
+                          colorBlendMode: BlendMode.darken,
+                          width: double.infinity,
+                          height: double.infinity,
+                          //color: Colors.black26,
                         ),
-                        maxLines: 1,
-                        textAlign: TextAlign.left,
                       ),
                     ),
-                  ),
-                ],
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        //color: Colors.black54,
+                        margin: EdgeInsets.only(bottom: 50),
+                        height: 35,
+                        alignment: Alignment.center,
+                        child: Text(
+                          _conect[index].title,
+                          style: TextStyles.caption(context).copyWith(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            //fontFamily: "serif",
+                          ),
+                          maxLines: 1,
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            onTap: () {
-              switch (index) {
-                case 0:
-                  Navigator.of(context).pushNamed(LivestreamsPlayer.routeName,
-                      arguments: ScreenArguements(
-                        position: 0,
-                        items: Provider.of<HomeProvider>(context, listen: false)
-                            .data['livestream'],
-                        itemsList: [],
-                      ));
+              onTap: () {
+                switch (index) {
+                  case 0:
+                    Navigator.of(context).pushNamed(LivestreamsPlayer.routeName,
+                        arguments: ScreenArguements(
+                          position: 0,
+                          items:
+                              Provider.of<HomeProvider>(context, listen: false)
+                                  .data['livestream'],
+                          itemsList: [],
+                        ));
 
-                  break;
-                case 2:
-                  Navigator.of(context).pushNamed(PhotosScreen.routeName);
-                  break;
-                case 1:
-                  Navigator.of(context).pushNamed(SermonsScreen.routeName);
-                  break;
-                case 3:
-                  Navigator.of(context).pushNamed(AudioScreen.routeName);
-                  break;
-                case 4:
-                  Navigator.of(context).pushNamed(VideoScreen.routeName);
-                  break;
-                case 5:
-                  Navigator.of(context)
-                      .pushNamed(GiveTestimonyScreen.routeName);
-                  break;
-              }
-            },
-          );
-        },
+                    break;
+                  case 2:
+                    Navigator.of(context).pushNamed(PhotosScreen.routeName);
+                    break;
+                  case 1:
+                    Navigator.of(context).pushNamed(SermonsScreen.routeName);
+                    break;
+                  case 3:
+                    Navigator.of(context).pushNamed(AudioScreen.routeName);
+                    break;
+                  case 4:
+                    Navigator.of(context).pushNamed(VideoScreen.routeName);
+                    break;
+                  case 5:
+                    Navigator.of(context)
+                        .pushNamed(GiveTestimonyScreen.routeName);
+                    break;
+                }
+              },
+            );
+          },
+        ),
       ),
     );
   }

@@ -10,6 +10,7 @@ import '../models/Branches.dart';
 import '../utils/TextStyles.dart';
 import 'NoitemScreen.dart';
 import '../i18n/strings.g.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 
 class BranchesScreen extends StatelessWidget {
   static const routeName = "/branches";
@@ -246,34 +247,33 @@ class ItemTile extends StatelessWidget {
                 ],
               ),
               Container(height: 10),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).pushNamed(LocationMap.routeName,
-                      arguments: ScreenArguements(
-                        position: 0,
-                        items: branches,
-                        itemsList: [],
-                      ));
-                },
-                child: Row(
-                  children: <Widget>[
-                    ClipOval(
-                        child: Container(
-                      color: Theme.of(context).accentColor.withAlpha(30),
-                      width: 50.0,
-                      height: 50.0,
-                      child: IconButton(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.location_on,
-                        ),
+              Row(
+                children: <Widget>[
+                  ClipOval(
+                      child: Container(
+                    color: Theme.of(context).accentColor.withAlpha(30),
+                    width: 50.0,
+                    height: 50.0,
+                    child: IconButton(
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      onPressed: () {
+                        MapsLauncher.launchCoordinates(branches.latitude, branches.longitude,
+                            '${branches.address}is here');
+                      },
+                      icon: Icon(
+                        Icons.location_on,
                       ),
-                    )),
-                    Container(width: 15),
-                    Expanded(
+                    ),
+                  )),
+                  Container(width: 15),
+                  GestureDetector(
+                    onTap: (){
+                         MapsLauncher.launchCoordinates(branches.latitude, branches.longitude,
+                            'TCC TORONTO is here');
+                    },
+                    child: Expanded(
                       child: Text(
-                        "View in map",
+                        "Get Direction",
                         style: TextStyles.subhead(context).copyWith(
                           fontWeight: FontWeight.w500,
                           decoration: TextDecoration.underline,
@@ -281,8 +281,8 @@ class ItemTile extends StatelessWidget {
                         textAlign: TextAlign.left,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               )
             ],
           ),

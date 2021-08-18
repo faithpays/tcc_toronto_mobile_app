@@ -1,64 +1,41 @@
 {
   "project_info": {
-    "project_number": "160642673140",
-    "firebase_url": "https://mychurch-3a9c9.firebaseio.com",
-    "project_id": "mychurch-3a9c9",
-    "storage_bucket": "mychurch-3a9c9.appspot.com"
+    "project_number": "694545203836",
+    "project_id": "tcc-toronto",
+    "storage_bucket": "tcc-toronto.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:160642673140:android:f0a9cb5f0860964e8771a1",
+        "mobilesdk_app_id": "1:694545203836:android:fa47d8eb259e53ca50bff9",
         "android_client_info": {
-          "package_name": "apps.envision.mychurch"
+          "package_name": "com.faithpays.tcctoronto"
         }
       },
       "oauth_client": [
         {
-          "client_id": "160642673140-j42g7d47l98hsvimjuu344egdbj6sk66.apps.googleusercontent.com",
+          "client_id": "694545203836-lflkbvksjartkabvvnjtu558515rm5ck.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDgD2EpZwct_d-stb7FBbBbdEpKYa6lN5Y"
+          "current_key": "AIzaSyCTL5JMPrvY7ocIWZYFZ_ya8NkdoqnW4fY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "160642673140-j42g7d47l98hsvimjuu344egdbj6sk66.apps.googleusercontent.com",
+              "client_id": "694545203836-lflkbvksjartkabvvnjtu558515rm5ck.apps.googleusercontent.com",
               "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:160642673140:android:50444551145c7a608771a1",
-        "android_client_info": {
-          "package_name": "apps.envisionapps.churchapp_flutter"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "160642673140-j42g7d47l98hsvimjuu344egdbj6sk66.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDgD2EpZwct_d-stb7FBbBbdEpKYa6lN5Y"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
+            },
             {
-              "client_id": "160642673140-j42g7d47l98hsvimjuu344egdbj6sk66.apps.googleusercontent.com",
-              "client_type": 3
+              "client_id": "694545203836-nfsqnvhoq46tgg5h9i2t0sjg8mretlf0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.faithpays.tcctoronto"
+              }
             }
           ]
         }
