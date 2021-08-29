@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'Utility.dart';
 
 class MyColors {
-  //static Color primary = Utility.hexToColor("#a74aab");
-  static Color primary = Utility.hexToColor("#3d43e3");
+  static Color primary = Utility.hexToColor("#a74aab");
+  //static Color primary = Utility.hexToColor("#3d43e3");
   static Color primaryDark = Utility.hexToColor("#a74aab");
   static Color primaryLight = Colors.pink[300];
   static Color primaryVeryLight = Colors.pink[100];
