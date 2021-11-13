@@ -132,6 +132,7 @@ class OnboarderPageState extends State<OnboardingPage> {
                           ), //Image.asset(Img.get(onboarder.image),
                         ),
                         Text(onboarder.title,
+                        textAlign: TextAlign.center,
                             style: TextStyles.medium(context).copyWith(
                                 color: MyColors.grey_80,
                                 fontFamily: "serif",

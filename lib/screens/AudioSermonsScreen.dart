@@ -1,3 +1,4 @@
+import 'package:churchapp_flutter/utils/TextStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -87,21 +88,28 @@ class MediaScreenRouteState extends State<AudioScreenBody> {
       controller: mediaScreensModel.refreshController,
       onRefresh: _onRefresh,
       onLoading: _onLoading,
-      child: (mediaScreensModel.isError == true && items.length == 0)
+      child: (mediaScreensModel.isError)
           ? NoitemScreen(
               title: t.oops, message: t.dataloaderror, onClick: _onRefresh)
-          : ListView.builder(
-              itemCount: items.length,
-              scrollDirection: Axis.vertical,
-              padding: EdgeInsets.all(3),
-              itemBuilder: (BuildContext context, int index) {
-                return ItemTile(
-                  mediaList: items,
-                  index: index,
-                  object: items[index],
-                );
-              },
-            ),
+          : (true && items.length == 0)
+              ? Center(
+                  child: Text("Audio folder is currently empty",
+                      style: TextStyles.medium(context).copyWith(
+                          //color: MyColors.primary
+                          )),
+                )
+              : ListView.builder(
+                  itemCount: items.length,
+                  scrollDirection: Axis.vertical,
+                  padding: EdgeInsets.all(3),
+                  itemBuilder: (BuildContext context, int index) {
+                    return ItemTile(
+                      mediaList: items,
+                      index: index,
+                      object: items[index],
+                    );
+                  },
+                ),
     );
   }
 }

@@ -102,12 +102,12 @@ class _DrawerScreenState extends State<DrawerScreen> {
           children: <Widget>[
             Stack(
               children: [
-                Container(
-                  height: 150,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(image: ExactAssetImage(Img.get("tcclogo.png")),)
-                  ),
-                )
+                // Container(
+                //   height: 150,
+                //   decoration: BoxDecoration(
+                //     image: DecorationImage(image: ExactAssetImage(Img.get("tcclogo.png")),)
+                //   ),
+                // )
                 // (userdata != null && userdata.coverPhoto != "")
                 //     ? Container(
                 //         width: double.infinity,
@@ -184,8 +184,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 //           },
                 //         ),
                 //       ),
-                  //   ],
-                  // ),
+                //   ],
+                // ),
                 //),
               ],
             ),
@@ -297,7 +297,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   //     ),
                   //   ),
                   // ),
-                //  Container(height: 15),
+                  //  Container(height: 15),
                   /* Divider(height: 1, color: Colors.grey),
                   Container(height: 8),
                   InkWell(
@@ -529,10 +529,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
               ),
             ),
             Container(height: 550),
-                Center(child: Text("Powered by FaithPays")),
+            Center(child: Text("Powered by FaithPays")),
           ],
-
-      
         ),
       ),
     );
