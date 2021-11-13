@@ -323,75 +323,75 @@ class _WorshipGuideScreenBodyState extends State<WorshipGuideScreenBody> {
                     height: 40,
                   ),
                 ),
-                // Container(width: 10),
-                // InkWell(
-                //   onTap: () {
-                //     if (Provider.of<WorshipGuideProvider>(context,
-                //                 listen: false)
-                //             .worshipGuide ==
-                //         null) {
-                //       Alerts.show(context, "",
-                //           "The item is not available at the moment");
-                //       return;
-                //     } else {
-                //       openBrowserTab(Provider.of<WorshipGuideProvider>(context,
-                //               listen: false)
-                //           .worshipGuide
-                //           .youtube);
-                //     }
-                //   },
-                //   child: Container(
-                //     child: Image.asset(Img.get('img_social_youtube.png')),
-                //     width: 40,
-                //     height: 40,
-                //   ),
-                // ),
-                // Container(width: 10),
-                // InkWell(
-                //   onTap: () {
-                //     if (Provider.of<WorshipGuideProvider>(context,
-                //                 listen: false)
-                //             .worshipGuide ==
-                //         null) {
-                //       Alerts.show(context, "",
-                //           "The item is not available at the moment");
-                //       return;
-                //     } else {
-                //       openBrowserTab(Provider.of<WorshipGuideProvider>(context,
-                //               listen: false)
-                //           .worshipGuide
-                //           .twitter);
-                //     }
-                //   },
-                //   child: Container(
-                //     child: Image.asset(Img.get('img_social_twitter.png')),
-                //     width: 40,
-                //     height: 40,
-                //   ),
-                // ),
-                // Container(width: 10),
-                // InkWell(
-                //   onTap: () {
-                //     if (Provider.of<WorshipGuideProvider>(context,
-                //                 listen: false)
-                //             .worshipGuide ==
-                //         null) {
-                //       Alerts.show(context, "",
-                //           "The item is not available at the moment");
-                //       return;
-                //     } else {
-                //       openBrowserTab(Provider.of<WorshipGuideProvider>(context,
-                //               listen: false)
-                //           .worshipGuide
-                //           .instagram);
-                //     }
-                //   },
-                //   child: Container(
-                //     child: Image.asset(Img.get('img_social_instagram.png')),
-                //     width: 40,
-                //     height: 40,
-                //   ),
-                // ),
+                Container(width: 10),
+                InkWell(
+                  onTap: () {
+                    if (Provider.of<WorshipGuideProvider>(context,
+                                listen: false)
+                            .worshipGuide ==
+                        null) {
+                      Alerts.show(context, "",
+                          "The item is not available at the moment");
+                      return;
+                    } else {
+                      openBrowserTab(Provider.of<WorshipGuideProvider>(context,
+                              listen: false)
+                          .worshipGuide
+                          .youtube);
+                    }
+                  },
+                  child: Container(
+                    child: Image.asset(Img.get('img_social_youtube.png')),
+                    width: 40,
+                    height: 40,
+                  ),
+                ),
+                Container(width: 10),
+                InkWell(
+                  onTap: () {
+                    if (Provider.of<WorshipGuideProvider>(context,
+                                listen: false)
+                            .worshipGuide ==
+                        null) {
+                      Alerts.show(context, "",
+                          "The item is not available at the moment");
+                      return;
+                    } else {
+                      openBrowserTab(Provider.of<WorshipGuideProvider>(context,
+                              listen: false)
+                          .worshipGuide
+                          .twitter);
+                    }
+                  },
+                  child: Container(
+                    child: Image.asset(Img.get('img_social_twitter.png')),
+                    width: 40,
+                    height: 40,
+                  ),
+                ),
+                Container(width: 10),
+                InkWell(
+                  onTap: () {
+                    if (Provider.of<WorshipGuideProvider>(context,
+                                listen: false)
+                            .worshipGuide ==
+                        null) {
+                      Alerts.show(context, "",
+                          "The item is not available at the moment");
+                      return;
+                    } else {
+                      openBrowserTab(Provider.of<WorshipGuideProvider>(context,
+                              listen: false)
+                          .worshipGuide
+                          .instagram);
+                    }
+                  },
+                  child: Container(
+                    child: Image.asset(Img.get('img_social_instagram.png')),
+                    width: 40,
+                    height: 40,
+                  ),
+                ),
               ],
             ),
           ),

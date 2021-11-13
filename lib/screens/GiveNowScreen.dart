@@ -53,7 +53,7 @@ class _GiveNowScreenState extends State<GiveNowScreen> {
             alignment: Alignment.center,
             height: 45.0,
             child: Text(
-              'You are about to navigate away from the TCC TORONTO app.',
+              'You are about to navigate away from the Ekklesia KM app.',
               style: TextStyle(fontSize: 18.0),
               textAlign: TextAlign.center,
             ),
