@@ -153,13 +153,13 @@ class Strings {
 		'Welcome to TCC TORONTO',
 		'Packed with Features',
 		'Audio, Video \n and Live Streaming',
-		'Create Account',
+	//	'Create Account',
 	];
 	List<String> get onboardingpagehints => [
 		'Extend beyond the Sunday mornings; the four walls of your church. Everything you need to communicate and engage with a mobile-focused world.',
 		'We have brought together all of the top features that your church app must have. Events, Devotionals, Notifications, Notes and multi-version bible.',
-		'Allow users across the globe watch videos, listen to audio messages and watch live streams of your church services.',
-		'Start your journey to a never-ending worship experience.',
+		'Allow users across the globe to watch videos, listen to audio messages and watch live streams.',
+	//	'Start your journey to a never-ending worship experience.',
 	];
 	String get next => 'NEXT';
 	String get done => 'Get Started';

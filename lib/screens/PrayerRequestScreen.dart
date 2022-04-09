@@ -136,7 +136,7 @@ class UploadMediaScreenState extends State<PrayerRequestScreen> {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(15, 5, 0, 20),
                   child: Text(
-                    "Send us your prayer request, and we will pray with you. We believe God will never fail you.",
+                    "Send us your prayer request, and we will pray for you. We believe God will never fail you.",
                     style: TextStyles.headline(context).copyWith(
                       //fontWeight: FontWeight.bold,
                       fontSize: 14,

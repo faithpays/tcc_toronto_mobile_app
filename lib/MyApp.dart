@@ -8,6 +8,7 @@ import 'package:churchapp_flutter/screens/LifeGroupScreen.dart';
 import 'package:churchapp_flutter/screens/LocationMap.dart';
 import 'package:churchapp_flutter/screens/MinistriesScreen.dart';
 import 'package:churchapp_flutter/screens/MinistryItemScreen.dart';
+import 'package:churchapp_flutter/screens/NoStreamingScreen.dart';
 import 'package:churchapp_flutter/screens/PhotosScreen.dart';
 import 'package:churchapp_flutter/screens/PrayerRequestScreen.dart';
 import 'package:churchapp_flutter/screens/SermonsScreen.dart';
@@ -422,7 +423,15 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               },
             );
           }
-
+           if (settings.name == NoStreamingScreen.routeName) {
+            return MaterialPageRoute(
+              builder: (context) {
+                return NoStreamingScreen(
+                  details: settings.arguments,
+                );
+              },
+            );
+          }
           if (settings.name == PhotosScreen.routeName) {
             return MaterialPageRoute(
               builder: (context) {

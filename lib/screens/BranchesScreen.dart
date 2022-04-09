@@ -269,10 +269,10 @@ class ItemTile extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       MapsLauncher.launchCoordinates(branches.latitude,
-                          branches.longitude, 'Ekklesia KM is here');
+                          branches.longitude, '${t.appname} is here');
                     },
                     child: Text(
-                      "Get Direction",
+                      "Get Directions",
                       style: TextStyles.subhead(context).copyWith(
                         fontWeight: FontWeight.w500,
                         decoration: TextDecoration.underline,

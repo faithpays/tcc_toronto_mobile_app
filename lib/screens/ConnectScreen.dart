@@ -33,11 +33,12 @@ class _ConnectScreenState extends State<ConnectScreen> {
     Connect(title: "Worship Guide", image: "assets/images/worship.jpg"),
     Connect(title: "Prayer Request", image: "assets/images/pexels1.jpg"),
     Connect(title: "Locations", image: "assets/images/location.jpg"),
-    Connect(title: "Share Testimony", image: "assets/images/testimony.jpg"),
+    Connect(title: "Share A Testimony", image: "assets/images/testimony.jpg"),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MyColors.primary,
       drawer: DrawerWidget(scaffoldKey: scaffoldKey),
       appBar: appBarWidget(context),
       body: Padding(
@@ -51,6 +52,7 @@ class _ConnectScreenState extends State<ConnectScreen> {
             // SizedBox(height: 5,),
             Expanded(
               child: Container(
+                 color: MyColors.primary,
                 child: GridView.builder(
                   shrinkWrap: true,
                   itemCount: _conect.length,

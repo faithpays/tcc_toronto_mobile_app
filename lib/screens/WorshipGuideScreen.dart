@@ -49,7 +49,7 @@ class _WorshipGuideScreenBodyState extends State<WorshipGuideScreenBody> {
         colorScheme: CustomTabsColorScheme.dark,
         toolbarColor: MyColors.primary,
         secondaryToolbarColor: MyColors.primary,
-        navigationBarColor: MyColors.primary,
+        navigationBarColor: MyColors.white,
         addDefaultShareMenuItem: true,
         instantAppsEnabled: true,
         showTitle: false,
@@ -58,7 +58,7 @@ class _WorshipGuideScreenBodyState extends State<WorshipGuideScreenBody> {
       safariVCOptions: SafariViewControllerOptions(
         barCollapsingEnabled: true,
         preferredBarTintColor: MyColors.primary,
-        preferredControlTintColor: MyColors.primary,
+        preferredControlTintColor: MyColors.white,
         dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,
         modalPresentationCapturesStatusBarAppearance: true,
       ),

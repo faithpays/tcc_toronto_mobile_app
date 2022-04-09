@@ -245,48 +245,48 @@ class _MediaCommentsLikesContainerState
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              InkWell(
-                onTap: () {
-                  mediaPlayerModel
-                      .likePost(mediaPlayerModel.isLiked ? "unlike" : "like");
-                },
-                child: Row(children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 6),
-                    child: FaIcon(FontAwesomeIcons.thumbsUp,
-                        size: 26,
-                        color: mediaPlayerModel.isLiked
-                            ? Colors.pink
-                            : Colors.white),
-                  ),
-                  mediaPlayerModel.likesCount == 0
-                      ? Container()
-                      : Text(mediaPlayerModel.likesCount.toString(),
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          )),
-                ]),
-              ),
-              InkWell(
-                onTap: () {
-                  mediaPlayerModel.navigatetoCommentsScreen(context);
-                },
-                child: Row(
-                  children: <Widget>[
-                    Icon(Icons.insert_comment, size: 26, color: Colors.white),
-                    mediaPlayerModel.commentsCount == 0
-                        ? Container()
-                        : Text(mediaPlayerModel.commentsCount.toString(),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            )),
-                  ],
-                ),
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     mediaPlayerModel
+              //         .likePost(mediaPlayerModel.isLiked ? "unlike" : "like");
+              //   },
+              //   child: Row(children: <Widget>[
+              //     Padding(
+              //       padding: EdgeInsets.fromLTRB(0, 0, 0, 6),
+              //       child: FaIcon(FontAwesomeIcons.thumbsUp,
+              //           size: 26,
+              //           color: mediaPlayerModel.isLiked
+              //               ? Colors.pink
+              //               : Colors.white),
+              //     ),
+              //     mediaPlayerModel.likesCount == 0
+              //         ? Container()
+              //         : Text(mediaPlayerModel.likesCount.toString(),
+              //             style: TextStyle(
+              //               color: Colors.white,
+              //               fontWeight: FontWeight.bold,
+              //               fontSize: 16,
+              //             )),
+              //   ]),
+              // ),
+              // InkWell(
+              //   onTap: () {
+              //     mediaPlayerModel.navigatetoCommentsScreen(context);
+              //   },
+              //   child: Row(
+              //     children: <Widget>[
+              //       Icon(Icons.insert_comment, size: 26, color: Colors.white),
+              //       mediaPlayerModel.commentsCount == 0
+              //           ? Container()
+              //           : Text(mediaPlayerModel.commentsCount.toString(),
+              //               style: TextStyle(
+              //                 color: Colors.white,
+              //                 fontWeight: FontWeight.bold,
+              //                 fontSize: 16,
+              //               )),
+              //     ],
+              //   ),
+              // ),
               IconButton(
                 onPressed: () {
                   widget.audioPlayerModel.shufflePlaylist();

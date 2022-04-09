@@ -1,5 +1,10 @@
+import 'dart:convert';
+
+import 'package:churchapp_flutter/i18n/strings.g.dart';
+
 import 'package:churchapp_flutter/utils/ApiUrl.dart';
 import 'package:churchapp_flutter/utils/StringsUtils.dart';
+import 'package:churchapp_flutter/utils/Utility.dart';
 import 'package:churchapp_flutter/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +18,50 @@ class GiveNowScreen extends StatefulWidget {
 }
 
 class _GiveNowScreenState extends State<GiveNowScreen> {
+  bool isLoading = true;
+  bool isError = false;
+  String donationUrl;
+ // List<GetDonationUrlModel> items = [];
+  Future<void> loadItems() async {
+    setState(() {
+      isLoading = true;
+    });
+    try {
+      final response = await Utility.getDio()
+          .get(ApiUrl.GET_DONATION_URL + StringsUtils.CHURCH_ID);
+
+      if (response.statusCode == 200) {
+        // If the server did return a 200 OK response,
+        // then parse the JSON.
+        dynamic res = jsonDecode(response.data);
+        print(res);
+        print(res[0]["donation_link"]);
+        // List<GetDonationUrlModel> _items =
+        //     GetDonationUrlModel.fromJson(res).toJson();
+        setState(() {
+          isLoading = false;
+          donationUrl = res[0]["donation_link"];
+        });
+
+        // print(items.donationLink);
+      } else {
+        // If the server did not return a 200 OK response,
+        // then throw an exception.
+        setState(() {
+          isLoading = false;
+          isError = true;
+        });
+      }
+    } catch (exception) {
+      // I get no exception here
+      print(exception);
+      setState(() {
+        isLoading = false;
+        isError = true;
+      });
+    }
+  }
+
   Future<void> _launchInBrowser(String url) async {
     if (await canLaunch(url)) {
       await launch(
@@ -27,6 +76,13 @@ class _GiveNowScreenState extends State<GiveNowScreen> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    loadItems().whenComplete(() => null);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AlertDialog(
       shape: RoundedRectangleBorder(
@@ -35,7 +91,7 @@ class _GiveNowScreenState extends State<GiveNowScreen> {
         ),
       ),
       title: Text(
-        'GIVE ONLINE',
+        'GIVE NOW',
         textAlign: TextAlign.center,
         style: TextStyle(
           fontWeight: FontWeight.w700,
@@ -48,13 +104,32 @@ class _GiveNowScreenState extends State<GiveNowScreen> {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          Container(
+            alignment: Alignment.center,
+
+            child: Text(
+              'Your generosity matters',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 18.0,
+                color: MyColors.primary,
+              ),
+            ),
+            // child: Text(
+            //   'Your Generosity Matters',
+            //   style: TextStyle(fontSize: 12.0, fontStyle: FontStyle.italic,),
+            //   textAlign: TextAlign.center,
+
+            // ),
+          ),
           SizedBox(height: 10.0),
           Container(
             alignment: Alignment.center,
-            height: 45.0,
+            //height: 45.0,
             child: Text(
-              'You are about to navigate away from the Ekklesia KM app.',
-              style: TextStyle(fontSize: 18.0),
+              'You are about to leave the ${t.appname} App and go to an external donation service.',
+              style: TextStyle(fontSize: 14.0, color: MyColors.primary),
               textAlign: TextAlign.center,
             ),
           ),
@@ -83,7 +158,7 @@ class _GiveNowScreenState extends State<GiveNowScreen> {
                   onPrimary: Colors.white,
                 ),
                 onPressed: () {
-                  _launchInBrowser(ApiUrl.donateUrl + StringsUtils.CHURCH_ID);
+                  _launchInBrowser(donationUrl);
                 },
                 child: Text('Continue'),
               )

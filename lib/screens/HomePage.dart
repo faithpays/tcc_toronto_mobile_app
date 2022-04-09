@@ -1,11 +1,18 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:churchapp_flutter/providers/EventsModel.dart';
 import 'package:churchapp_flutter/providers/WorshipGuideProvider.dart';
 import 'package:churchapp_flutter/screens/MediaScreen.dart';
 import 'package:churchapp_flutter/screens/ConnectScreen.dart';
 import 'package:churchapp_flutter/screens/DonateScreen.dart';
 import 'package:churchapp_flutter/screens/EventsScreen.dart';
+import 'package:churchapp_flutter/utils/ApiUrl.dart';
+import 'package:churchapp_flutter/utils/Utility.dart';
 import 'package:churchapp_flutter/utils/img.dart';
+import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/HomeProvider.dart';
 import '../screens/DrawerScreen.dart';
 import '../screens/SearchScreen.dart';
@@ -52,6 +59,73 @@ class HomePageItem extends StatefulWidget {
 class _HomePageItemState extends State<HomePageItem> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   int currentIndex = 0;
+   String idm;
+  String androidId;
+  getFirstScreen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool("send_details") == null ||
+        prefs.getBool("send_details") == false) {
+      return getDeviceInfo();
+    } else {
+      return null;
+    }
+  }
+
+  Future<void> getDeviceInfo() async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    if (Platform.isAndroid) {
+      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+      setState(() {
+        androidId = androidInfo.androidId;
+        sendUserId(androidId);
+
+        // print(androidInfo.fingerprint);
+        // print(androidInfo.board);
+        // print(androidInfo.host);
+        // print(androidInfo.manufacturer);
+      });
+
+      print('Running on ${androidInfo.androidId}');
+    } else if (Platform.isIOS) {
+      IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+      setState(() {
+        idm = iosInfo.identifierForVendor;
+        sendUserId(idm);
+      });
+      print(idm);
+
+      print('Running on ${iosInfo.identifierForVendor}');
+    } else {
+      null;
+    }
+  }
+
+  Future<void> sendUserId(String id) async {
+    try {
+      final response = await Utility.getDio().post(
+        ApiUrl.SEND_PHONE_DETAILS,
+        data: jsonEncode({
+          "data": {
+            "deviceId": id,
+          }
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        dynamic res = jsonDecode(response.data);
+        if (res["status"] == "error") {
+          // Alerts.show(context, t.error, res["message"]);
+        } else {
+          //print(androidId);
+         // print(">>>>>>>>LLLLL${response.data}");
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          prefs.setBool("send_details", true);
+        }
+      } else {
+        //Navigator.of(context).pop();
+      }
+    } catch (exception) {}
+  }
 
   List<BottomNavigationBarItem> navigationItems = [
     BottomNavigationBarItem(
@@ -79,6 +153,7 @@ class _HomePageItemState extends State<HomePageItem> {
   @override
   void initState() {
     super.initState();
+    getFirstScreen();
     _onItemTapped(widget.selectedIndex);
     Future.delayed(const Duration(milliseconds: 0), () {
       Provider.of<WorshipGuideProvider>(context, listen: false)

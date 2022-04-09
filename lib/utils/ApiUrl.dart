@@ -9,7 +9,9 @@ class ApiUrl {
   static const String DONATE = BASEURL + "donate";
   static const String DISCOVER = BASEURL + "discover";
   static const String CATEGORIES = BASEURL + "fetch_categories";
+  static const String GET_DONATION_URL = "https://donation.faithpays.org/account/select-donation-page-api.php?church_id=";
   static const String LIVESTREAMS = BASEURL + "discoverLivestreams";
+   static const String LIVESTREAM = BASEURL + "getlivestreams";
   static const String TRENDING = BASEURL + "discoverTrends";
   static const String FETCH_MEDIA = BASEURL + "fetch_media";
   static const String FETCH_BRANCHES = BASEURL + "church_branches";
@@ -93,5 +95,6 @@ class ApiUrl {
   static const String fetch_photos = BASEURL + "fetch_photos";
   static const String connect_card = BASEURL + "connect_card";
   static const String getWorshipGuide = BASEURL + "getWorshipGuide";
-  static const String donateUrl = "https://donation.faithpays.org/dms/register.php?id=";
+   static const String donateUrl = "https://donation.faithpays.org/userdash/donation.php?church_id=";
+   static const String SEND_PHONE_DETAILS = BASEURL + "send_details";
 }

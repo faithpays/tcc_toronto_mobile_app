@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../i18n/strings.g.dart';
 import '../screens/NoitemScreen.dart';
+import 'NewPhotos.dart';
 
 class PhotosScreen extends StatelessWidget {
   static const routeName = "/PhotosScreen";
@@ -100,14 +101,15 @@ class _PhotosScreenBodyBodyState extends State<PhotosScreenBody> {
                     childAspectRatio: 0.9),
                 itemBuilder: (BuildContext context, int index) {
                   Photos photos = photosModel.photos[index];
+                  List<Photos> photosList = photosModel.photos;
                   return InkWell(
                     onTap: () {
-                      Navigator.of(context).pushNamed(Imageviewer.routeName,
-                          arguments: ScreenArguements(
-                            position: 0,
-                            items: photos,
-                            itemsList: [],
-                          ));
+                      Navigator.push(context, MaterialPageRoute(
+      builder: (context) => PortfolioGalleryDetailPage(
+        imagePaths: photosList,
+        currentIndex: index,
+      ),));
+                    
                     },
                     child: Card(
                         margin: EdgeInsets.all(0),

@@ -17,7 +17,7 @@ class PhotosModel with ChangeNotifier {
   PhotosModel();
 
   loadItems() {
-    refreshController.requestRefresh();
+    //refreshController.requestRefresh();
     page = 0;
     isLoading = true;
     isError = false;

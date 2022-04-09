@@ -1,3 +1,4 @@
+import 'package:churchapp_flutter/models/LiveStreams.dart';
 import 'package:churchapp_flutter/providers/AppStateManager.dart';
 import 'package:churchapp_flutter/screens/GiveTestimonyScreen.dart';
 import 'package:churchapp_flutter/screens/PrayerRequestScreen.dart';
@@ -22,6 +23,8 @@ import '../providers/HomeProvider.dart';
 import '../i18n/strings.g.dart';
 import '../screens/NoitemScreen.dart';
 import 'HomePage.dart';
+import 'LiveStreamPage.dart';
+import 'NoStreamingScreen.dart';
 import 'SearchScreen.dart';
 
 enum HomeIndex { CATEGORIES, VIDEOS, AUDIOS, BIBLEBOOKS, LIVESTREAMS, RADIO }
@@ -192,158 +195,312 @@ class NewHomee extends StatelessWidget {
           title: t.oops, message: t.dataloaderror, onClick: onRetryClick);
     } else
       return Container(
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(color: Colors.black),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 0,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage("assets/images/ministrybg.jpg"))),
-                height: 120,
-                width: MediaQuery.of(context).size.width,
-                child: Center(
-                    child: Text(
-                  "TCC TORONTO",
-                  style: TextStyle(
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          //  crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 0,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage("assets/images/ministrybg.jpg"))),
+              height: 120,
+              width: MediaQuery.of(context).size.width,
+              child: Center(
+                  child: Text(
+                "${t.appname}",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Roboto",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 28),
+              )),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Text(
+                    "Explore",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
                       color: Colors.white,
-                      fontFamily: "Roboto",
-                      fontWeight: FontWeight.w600,
-                      fontSize: 28),
-                )),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Text(
-                  "Explore",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "serif",
-                    fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "serif",
+                      fontSize: 24,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                  padding: EdgeInsets.only(top: 8, right: 10, left: 10),
-                  width: MediaQuery.of(context).size.height,
-                  height: 250,
-                  color: Colors.black,
-                  alignment: Alignment.center,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      ExploreeCard(
-                          title: "Sermon",
-                          image: "messages.jpg",
-                          onTap: () {
-                            Navigator.of(context)
-                                .pushNamed(VideoScreen.routeName);
-                          }),
-                      ExploreeCard(
-                        title: "Events",
-                        image: "events.jpg",
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ExploreeCard(
+                        title: "Sermons",
+                        image: "messages.jpg",
                         onTap: () {
                           Navigator.of(context)
-                              .pushNamed(EventsListScreen.routeName);
-                        },
-                      ),
-                      ExploreeCard(
-                        title: "Share Testimony",
-                        image: "lifegroups.jpg",
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(GiveTestimonyScreen.routeName);
-                        },
-                      ),
-                    ],
-                  )),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Hand picked for you",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "serif",
-                    fontSize: 24,
+                              .pushNamed(VideoScreen.routeName);
+                        }),
+                    ExploreeCard(
+                      title: "Share A Testimony",
+                      image: "lifegroups.jpg",
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(GiveTestimonyScreen.routeName);
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Text(
+                    "Hand Picked For You",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "serif",
+                      fontSize: 24,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                  padding: EdgeInsets.only(top: 8, right: 10, left: 10),
-                  width: MediaQuery.of(context).size.height,
-                  height: 250,
-                  color: Colors.black87,
-                  alignment: Alignment.center,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      ExploreeCard(
-                        title: "Bible",
-                        image: "Bible-4.jpg",
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(BibleScreen.routeName);
-                        },
-                      ),
-                      ExploreeCard(
-                        title: "Devotionals",
-                        image: "devotionals.jpeg",
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(DevotionalScreen.routeName);
-                        },
-                      ),
-                      ExploreeCard(
-                        title: "LiveStream",
-                        image: "pexels7.jpg",
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(LivestreamsPlayer.routeName,
-                                  arguments: ScreenArguements(
-                                    position: 0,
-                                    items: homeProvider.data['livestream'],
-                                    itemsList: [],
-                                  ));
-                        },
-                      ),
-                      ExploreeCard(
-                        title: "Prayer Request",
-                        image: "pexels1.jpg",
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(PrayerRequestScreen.routeName);
-                        },
-                      ),
-                      ExploreeCard(
-                        title: "Location",
-                        image: "pexels2.jpg",
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(BranchesScreen.routeName);
-                        },
-                      ),
-                      ExploreeCard(
-                        title: "Worship Guide",
-                        image: "worship.jpg",
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(WorshipGuideScreen.routeName);
-                        },
-                      ),
-                    ],
-                  )),
-            ],
-          ),
+                SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GridView(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          // ExploreeCard(
+                          // title: "Sermon",
+                          // image: "messages.jpg",
+                          // onTap: () {
+                          //   Navigator.of(context)
+                          //       .pushNamed(VideoScreen.routeName);
+                          // }),
+                          // ExploreeCard(
+                          //   title: "Events",
+                          //   image: "events.jpg",
+                          //   onTap: () {
+                          //     Navigator.of(context)
+                          //         .pushNamed(EventsListScreen.routeName);
+                          //   },
+                          // ),
+                          // ExploreeCard(
+                          //   title: "Share Testimony",
+                          //   image: "lifegroups.jpg",
+                          //   onTap: () {
+                          //     Navigator.of(context)
+                          //         .pushNamed(GiveTestimonyScreen.routeName);
+                          //   },
+                          // ),
+                          ExploreeCard(
+                            title: "Bible",
+                            image: "Bible-4.jpg",
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(BibleScreen.routeName);
+                            },
+                          ),
+                          ExploreeCard(
+                            title: "Devotionals",
+                            image: "devotionals.jpeg",
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(DevotionalScreen.routeName);
+                            },
+                          ),
+                          ExploreeCard(
+                            title: "LiveStream",
+                            image: "pexels7.jpg",
+                             onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LivestreamPage()),
+                              );
+                            // onTap: () {
+                            //   LiveStreams livestreams = (homeProvider
+                            //       .data["livestream"] as LiveStreams);
+
+                            //   if (livestreams.status == 0) {
+                            //     Navigator.of(context).pushNamed(
+                            //         LivestreamsPlayer.routeName,
+                            //         arguments: ScreenArguements(
+                            //           position: 0,
+                            //           items: homeProvider.data['livestream'],
+                            //           itemsList: [],
+                            //         ));
+                            //   } else {
+                            //     Navigator.of(context).pushNamed(
+                            //         NoStreamingScreen.routeName,
+                            //         arguments: livestreams.details);
+                            //     // homeProvider.data["livestream"].toString());
+                            //   }
+                              // Navigator.of(context)
+                              //     .pushNamed(LivestreamsPlayer.routeName,
+                              //         arguments: ScreenArguements(
+                              //           position: 0,
+                              //           items: homeProvider.data['livestream'],
+                              //           itemsList: [],
+                              //         ));
+                            },
+                          ),
+                          ExploreeCard(
+                            title: "Prayer Request",
+                            image: "pexels1.jpg",
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(PrayerRequestScreen.routeName);
+                            },
+                          ),
+                          ExploreeCard(
+                            title: "Location",
+                            image: "pexels2.jpg",
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(BranchesScreen.routeName);
+                            },
+                          ),
+                          ExploreeCard(
+                            title: "Worship Guide",
+                            image: "worship.jpg",
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(WorshipGuideScreen.routeName);
+                            },
+                          ),
+                        ]),
+                  ),
+                )
+              ],
+            ),
+
+            // Container(
+            //     padding: EdgeInsets.only(top: 8, right: 10, left: 10),
+            //     width: MediaQuery.of(context).size.height,
+            //     height: 250,
+            //     color: Colors.black,
+            //     alignment: Alignment.center,
+            //     child: ListView(
+            //       scrollDirection: Axis.horizontal,
+            //       children: [
+            //         ExploreeCard(
+            //             title: "Sermon",
+            //             image: "messages.jpg",
+            //             onTap: () {
+            //               Navigator.of(context)
+            //                   .pushNamed(VideoScreen.routeName);
+            //             }),
+            //         ExploreeCard(
+            //           title: "Events",
+            //           image: "events.jpg",
+            //           onTap: () {
+            //             Navigator.of(context)
+            //                 .pushNamed(EventsListScreen.routeName);
+            //           },
+            //         ),
+            //         ExploreeCard(
+            //           title: "Share Testimony",
+            //           image: "lifegroups.jpg",
+            //           onTap: () {
+            //             Navigator.of(context)
+            //                 .pushNamed(GiveTestimonyScreen.routeName);
+            //           },
+            //         ),
+            //       ],
+            //     )),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Text(
+            //     "Hand picked for you",
+            //     style: TextStyle(
+            //       color: Colors.white,
+            //       fontWeight: FontWeight.bold,
+            //       fontFamily: "serif",
+            //       fontSize: 24,
+            //     ),
+            //   ),
+            // ),
+            // Container(
+            //     padding: EdgeInsets.only(top: 8, right: 10, left: 10),
+            //     width: MediaQuery.of(context).size.height,
+            //     height: 250,
+            //     color: Colors.black87,
+            //     alignment: Alignment.center,
+            //     child: ListView(
+            //       scrollDirection: Axis.horizontal,
+            //       children: [
+            //         ExploreeCard(
+            //           title: "Bible",
+            //           image: "Bible-4.jpg",
+            //           onTap: () {
+            //             Navigator.of(context)
+            //                 .pushNamed(BibleScreen.routeName);
+            //           },
+            //         ),
+            //         ExploreeCard(
+            //           title: "Devotionals",
+            //           image: "devotionals.jpeg",
+            //           onTap: () {
+            //             Navigator.of(context)
+            //                 .pushNamed(DevotionalScreen.routeName);
+            //           },
+            //         ),
+            //         ExploreeCard(
+            //           title: "LiveStream",
+            //           image: "pexels7.jpg",
+            //           onTap: () {
+            //             Navigator.of(context)
+            //                 .pushNamed(LivestreamsPlayer.routeName,
+            //                     arguments: ScreenArguements(
+            //                       position: 0,
+            //                       items: homeProvider.data['livestream'],
+            //                       itemsList: [],
+            //                     ));
+            //           },
+            //         ),
+            //         ExploreeCard(
+            //           title: "Prayer Request",
+            //           image: "pexels1.jpg",
+            //           onTap: () {
+            //             Navigator.of(context)
+            //                 .pushNamed(PrayerRequestScreen.routeName);
+            //           },
+            //         ),
+            //         ExploreeCard(
+            //           title: "Location",
+            //           image: "pexels2.jpg",
+            //           onTap: () {
+            //             Navigator.of(context)
+            //                 .pushNamed(BranchesScreen.routeName);
+            //           },
+            //         ),
+            //         ExploreeCard(
+            //           title: "Worship Guide",
+            //           image: "worship.jpg",
+            //           onTap: () {
+            //             Navigator.of(context)
+            //                 .pushNamed(WorshipGuideScreen.routeName);
+            //           },
+            //         ),
+            //       ],
+            //     )),
+          ],
         ),
       );
   }
@@ -456,34 +613,37 @@ class ExploreeCard extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.only(right: 12.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                "assets/images/${image}",
-                fit: BoxFit.cover,
-                height: 200,
-                width: 190,
+        child: Container(
+          height: 200,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  "assets/images/${image}",
+                  fit: BoxFit.cover,
+                  height: 170,
+                  width: 190,
 
-                //color: Colors.black26,
+                  //color: Colors.black26,
+                ),
               ),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            Text(
-              title,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontFamily: "serif",
-                fontSize: 16,
-                color: Colors.white,
+              SizedBox(
+                height: 8,
               ),
-            ),
-          ],
+              Text(
+                title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "serif",
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

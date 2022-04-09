@@ -1,5 +1,6 @@
 import 'package:churchapp_flutter/livetvplayer/LivestreamsPlayer.dart';
 import 'package:churchapp_flutter/models/Connect.dart';
+import 'package:churchapp_flutter/models/LiveStreams.dart';
 import 'package:churchapp_flutter/models/ScreenArguements.dart';
 import 'package:churchapp_flutter/providers/HomeProvider.dart';
 import 'package:churchapp_flutter/screens/AudioScreen.dart';
@@ -19,6 +20,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 import 'HomePage.dart';
+import 'LiveStreamPage.dart';
+import 'NoStreamingScreen.dart';
 import 'SearchScreen.dart';
 
 class MediaScreen extends StatefulWidget {
@@ -33,7 +36,7 @@ class _MediaScreenState extends State<MediaScreen> {
 
   List<Connect> _conect = [
     Connect(title: "LiveStream", image: "assets/images/livestream.jpg"),
-    Connect(title: "Sermon", image: "assets/images/sermon.jpg"),
+    Connect(title: "Sermons", image: "assets/images/sermon.jpg"),
     Connect(title: "Photos", image: "assets/images/photos.jpg"),
     Connect(title: "Audio", image: "assets/images/audios.jpg"),
     Connect(title: "Video", image: "assets/images/videos.jpg"),
@@ -106,15 +109,38 @@ class _MediaScreenState extends State<MediaScreen> {
                 onTap: () {
                   switch (index) {
                     case 0:
-                      Navigator.of(context)
-                          .pushNamed(LivestreamsPlayer.routeName,
-                              arguments: ScreenArguements(
-                                position: 0,
-                                items: Provider.of<HomeProvider>(context,
-                                        listen: false)
-                                    .data['livestream'],
-                                itemsList: [],
-                              ));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LivestreamPage()),
+                      );
+                      // Navigator.of(context)
+                      //     .pushNamed(LivestreamsPlayer.routeName,
+                      //         arguments: ScreenArguements(
+                      //           position: 0,
+                      //           items: Provider.of<HomeProvider>(context,
+                      //                   listen: false)
+                      //               .data['livestream'],
+                      //           itemsList: [],
+                      //         ));
+                      // LiveStreams livestreams =
+                      //     Provider.of<HomeProvider>(context, listen: false)
+                      //         .data['livestream'] as LiveStreams;
+
+                      // if (livestreams.status == 0) {
+                      //   Navigator.of(context)
+                      //       .pushNamed(LivestreamsPlayer.routeName,
+                      //           arguments: ScreenArguements(
+                      //             position: 0,
+                      //             items: livestreams,
+                      //             itemsList: [],
+                      //           ));
+                      // } else {
+                      //   Navigator.of(context).pushNamed(
+                      //       NoStreamingScreen.routeName,
+                      //       arguments: livestreams.details);
+                      //   // homeProvider.data["livestream"].toString());
+                      // }
 
                       break;
                     case 2:

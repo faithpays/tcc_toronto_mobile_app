@@ -25,6 +25,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import './screens/OnboardingPage.dart';
 import './screens/HomePage.dart';
 import 'providers/ChatManager.dart';
+import 'providers/PhotosModel.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,6 +63,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => ChatManager()),
         ChangeNotifierProvider(create: (_) => HomeProvider()),
         ChangeNotifierProvider(create: (_) => WorshipGuideProvider()),
+        ChangeNotifierProvider(create: (_) => PhotosModel()),
       ],
       child: FutureBuilder<Widget>(
         future: getFirstScreen(), //returns bool
